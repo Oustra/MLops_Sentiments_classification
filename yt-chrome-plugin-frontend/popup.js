@@ -4,8 +4,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   const outputDiv = document.getElementById("output");
   const API_KEY = 'AIzaSyAx3V116F221l2RtQA5iRBGgfWcnFCsumQ';  
   // const API_URL = 'http://my-elb-2062136355.us-east-1.elb.amazonaws.com:80';   
-  // const API_URL = 'http://localhost:5000/';
-  const API_URL = 'http://23.20.221.231:8080/';
+   const API_URL = 'http://localhost:5000/';
+  //const API_URL = 'http://23.20.221.231:8080/';
 
   // Get the current tab's URL
   chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function getSentimentPredictions(comments) {
     try {
-      const response = await fetch(`${API_URL}/predict_with_timestamps`, {
+      const response = await fetch(`${API_URL}predict_with_timestamps`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ comments })
@@ -170,7 +170,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function fetchAndDisplayChart(sentimentCounts) {
     try {
-      const response = await fetch(`${API_URL}/generate_chart`, {
+      const response = await fetch(`${API_URL}generate_chart`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sentiment_counts: sentimentCounts })
@@ -195,7 +195,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function fetchAndDisplayWordCloud(comments) {
     try {
-      const response = await fetch(`${API_URL}/generate_wordcloud`, {
+      const response = await fetch(`${API_URL}generate_wordcloud`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ comments })
@@ -220,7 +220,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   async function fetchAndDisplayTrendGraph(sentimentData) {
     try {
-      const response = await fetch(`${API_URL}/generate_trend_graph`, {
+      const response = await fetch(`${API_URL}generate_trend_graph`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sentiment_data: sentimentData })
